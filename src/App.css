@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-width: 18rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+form {
+  border: 1px solid #aaa;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+input[type="text"] {
+  margin-right: 1rem;
+}
+
+dl {
+  margin: 0;
+}
+
+dl>div {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  gap: 1rem;
+}
+
+li:not(:last-of-type) {
+  border-bottom: 1px solid #aaa;
+}
+
+li:has(:checked) {
+  color: #888;
+  text-decoration: line-through;
+}
