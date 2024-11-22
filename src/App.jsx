@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { produce } from 'immer'
 
 import CreateItem from './CreateItem'
 import Header from './Header'
@@ -10,14 +11,25 @@ function App() {
 
   const [items, setItems] = useState([])
   const addItem = (item) => setItems(items => items.concat(item))
+  const complete = items.filter(item => item.checked).length
+
+  const onCheck = (index) => 
+    setItems(items => produce(items, draft => {
+      draft[index].checked = !draft[index].checked
+    }))
+
+  const onDelete = (index) =>
+    setItems(items => produce(items, draft => {
+      draft.splice(index, 1)
+    }))
 
   return (
     <>
       <h1>todo</h1>
-      <Header total={items.length} />
+      <Header complete={complete} total={items.length} />
 
       <main>
-        <List items={items} />
+        <List items={items} onCheck={onCheck} onDelete={onDelete} />
         {adding && (
           <CreateItem
             onSave={(item) => {

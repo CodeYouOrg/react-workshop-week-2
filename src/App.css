@@ -46,11 +46,20 @@ li {
   gap: 1rem;
 }
 
+li p {
+  flex-grow: 1;
+  text-align: left;
+}
+
 li:not(:last-of-type) {
   border-bottom: 1px solid #aaa;
 }
 
-li:has(:checked) {
+li:has(:checked) p {
   color: #888;
   text-decoration: line-through;
+}
+
+li button {
+  background: transparent;
 }
